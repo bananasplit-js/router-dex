@@ -1,10 +1,12 @@
 {
   "compilerOptions": {
-    "target": "es2016",
+    "target": "es5",
     "module": "commonjs",
     "declaration": true,
     "esModuleInterop": true,
     "strict": true,
-    "outDir": "./dist"
-  }
+    "outDir": "./dist",
+    "resolveJsonModule": true
+  },
+  "include": ["./package.json", "./lib", "./*.ts"]
 }

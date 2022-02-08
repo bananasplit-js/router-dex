@@ -2,11 +2,9 @@
   "name": "router-dex",
   "description": "Route and Middleware inspector for Express >= 4",
   "version": "1.0.0",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "index.js",
   "scripts": {
-    "build": "tsc",
-    "prepublish": "npm build"
+    "build": "tsc"
   },
   "license": "MIT",
   "author": "diegoulloao",
@@ -15,7 +13,7 @@
   },
   "dependencies": {
     "@types/express": "^4.17.13",
-    "chalk": "^5.0.0",
+    "chalk": "^4.1.2",
     "cli-table3": "^0.6.1",
     "sort-route-paths": "^1.0.0"
   }
