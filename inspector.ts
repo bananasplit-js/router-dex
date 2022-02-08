@@ -16,7 +16,7 @@ import {
   combineStacks,
   tablerizeRoutes,
   getRoutesFromStacks
-} from "./helpers"
+} from "./lib/helpers"
 
 // Types
 import Express from "express"
