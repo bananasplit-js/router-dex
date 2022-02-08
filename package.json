@@ -3,8 +3,10 @@
   "description": "Route and Middleware inspector for Express >= 4",
   "version": "1.0.0",
   "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "prepublish": "npm build"
   },
   "license": "MIT",
   "author": "diegoulloao",
