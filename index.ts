@@ -29,11 +29,11 @@ const sortPaths: any = require("sort-route-paths")
  */
 const getPathFromRegex = ( regexp: RegExp ): string => {
 
-	return regexp
-		.toString()
-		.replace("/^", "")
-		.replace("?(?=\\/|$)/i", "")
-		.replace(/\\\//g, "/")
+  return regexp
+  .toString()
+  .replace("/^", "")
+  .replace("?(?=\\/|$)/i", "")
+  .replace(/\\\//g, "/")
 
 }
 
@@ -48,15 +48,15 @@ const getPathFromRegex = ( regexp: RegExp ): string => {
  */
 const colorizeRouteMethod = ( method: string ): string => {
 
-	const colors: { [key: string]: string } = {
-		"GET": chalk.bgGreen.black.bold(` ${method} `),
-		"POST": chalk.bgBlue.black.bold(` ${method} `),
-		"PUT": chalk.bgYellow.black.bold(` ${method} `),
-		"DELETE": chalk.bgRed.black.bold(` ${method} `),
-		"PATCH": chalk.bgCyan.black.bold(` ${method} `)
-	}
+  const colors: { [key: string]: string } = {
+    "GET": chalk.bgGreen.black.bold(` ${method} `),
+    "POST": chalk.bgBlue.black.bold(` ${method} `),
+    "PUT": chalk.bgYellow.black.bold(` ${method} `),
+    "DELETE": chalk.bgRed.black.bold(` ${method} `),
+    "PATCH": chalk.bgCyan.black.bold(` ${method} `)
+  }
 
-	return colors[method] || chalk.white.bold(method)
+  return colors[method] || chalk.white.bold(method)
 
 }
 
@@ -72,38 +72,38 @@ const colorizeRouteMethod = ( method: string ): string => {
  */
 const combineStacks = ( acc: [], stack: any ): any[] => {
 
-	if ( stack.handle.stack ) {
-		// Extract route path from regex
-		const routerPath: string = getPathFromRegex(stack.regexp)
+  if ( stack.handle.stack ) {
+    // Extract route path from regex
+    const routerPath: string = getPathFromRegex(stack.regexp)
 
-		// Collect inner stack adding routePath
-		const innerStack: object[] = stack.handle.stack.map((s: any) => {
-			// Middlewares collection
-			const middlewares: string[] = []
+    // Collect inner stack adding routePath
+    const innerStack: object[] = stack.handle.stack.map((s: any) => {
+      // Middlewares collection
+      const middlewares: string[] = []
 
-			if ( s.route?.stack ) {
-				middlewares.push(...s.route.stack.map((s: any) => s.name))
-			}
+      if ( s.route?.stack ) {
+        middlewares.push(...s.route.stack.map((s: any) => s.name))
+      }
 
-			return { routerPath, middlewares, ...s }
-		})
+      return { routerPath, middlewares, ...s }
+    })
 
-		// Return accumulated inner stack
-		return [...acc, ...innerStack]
+    // Return accumulated inner stack
+    return [...acc, ...innerStack]
 
-	} else if ( stack.route ) {
-		// Middlewares collection
-		const middlewares: string[] = []
+  } else if ( stack.route ) {
+    // Middlewares collection
+    const middlewares: string[] = []
 
-		if ( stack.route.stack ) {
-			middlewares.push(...stack.route.stack.map((s: any) => s.name))
-		}
+    if ( stack.route.stack ) {
+      middlewares.push(...stack.route.stack.map((s: any) => s.name))
+    }
 
-		return [...acc, { middlewares, ...stack }]
-	}
+    return [...acc, { middlewares, ...stack }]
+  }
 
-	// Return accumulated stack
-	return [...acc, stack]
+  // Return accumulated stack
+  return [...acc, stack]
 
 }
 
@@ -117,43 +117,43 @@ const combineStacks = ( acc: [], stack: any ): any[] => {
  */
 const getRoutesFromStacks = ( stacks: any[] ): any[] => {
 
-	// Routes accumulator
-	const routes: any[] = []
+  // Routes accumulator
+  const routes: any[] = []
 
-	if ( stacks ) {
-		for ( const stack of stacks ) {
-			if ( stack.route ) {
-				const routeLogged: { [index: string]: any } = {}
+  if ( stacks ) {
+    for ( const stack of stacks ) {
+      if ( stack.route ) {
+        const routeLogged: { [index: string]: any } = {}
 
-				for ( const route of stack.route.stack ) {
-					// Extract route method
-					const method: string | null = route.method ? route.method.toUpperCase() : null
+        for ( const route of stack.route.stack ) {
+          // Extract route method
+          const method: string | null = route.method ? route.method.toUpperCase() : null
 
-					if ( method && !routeLogged[method] ) {
-						// Route path parts
-						const fullPathArray: string[] = [stack.routerPath, stack.route.path, route.path]
-						const middlewaresString: string = stack.middlewares ? stack.middlewares.join(", ") : ""
+          if ( method && !routeLogged[method] ) {
+            // Route path parts
+            const fullPathArray: string[] = [stack.routerPath, stack.route.path, route.path]
+            const middlewaresString: string = stack.middlewares ? stack.middlewares.join(", ") : ""
 
-						// Convert path parts to a entire string
-						const stackPath: string = path.resolve(
-							fullPathArray.filter((s: string) => !!s).join("")
-						)
+            // Convert path parts to a entire string
+            const stackPath: string = path.resolve(
+              fullPathArray.filter((s: string) => !!s).join("")
+            )
 
-						routes.push({
-							path: stackPath,
-							method,
-							middlewares: middlewaresString
-						})
+            routes.push({
+              path: stackPath,
+              method,
+              middlewares: middlewaresString
+            })
 
-						// Avoid duplicated routes during iteration
-						routeLogged[method] = true
-					}
-				}
-			}
-		}
-	}
+            // Avoid duplicated routes during iteration
+            routeLogged[method] = true
+          }
+        }
+      }
+    }
+  }
 
-	return routes
+  return routes
 
 }
 
@@ -167,41 +167,41 @@ const getRoutesFromStacks = ( stacks: any[] ): any[] => {
  */
 const tablerizeRoutes = ( routes: any[] ): any[] => {
 
-	const sortedRoutes: any[] = []
-	const r: RegExp = /^\/[a-z0-9]*\/?/
-	const i: RegExp = /\//g
+  const sortedRoutes: any[] = []
+  const r: RegExp = /^\/[a-z0-9]*\/?/
+  const i: RegExp = /\//g
 
-	routes.reduce((p: any, n: any): any => {
-		// Highlights each :param with chalk
-		const highlightedParamsPath: string = n.path.replace(/:[a-z0-9]+/g, chalk.cyan.bold("$&"))
+  routes.reduce((p: any, n: any): any => {
+    // Highlights each :param with chalk
+    const highlightedParamsPath: string = n.path.replace(/:[a-z0-9]+/g, chalk.cyan.bold("$&"))
 
-		// Changes <anonymous> by anonymous
-		const cleanedMiddlewareString: string = n.middlewares.replace(/^<anonymous>$/g, chalk.red("anonymous"))
+    // Changes <anonymous> by anonymous
+    const cleanedMiddlewareString: string = n.middlewares.replace(/^<anonymous>$/g, chalk.red("anonymous"))
 
-		// Add section label if previous and next routes have different base path
-		if ( p?.path.match(r)[0].replace(i, "") !== n.path.match(r)[0].replace(i, "") ) {
-			// Only add empty row when there is valid previous route
-			if (p) sortedRoutes.push(Array(3).fill(""))
+    // Add section label if previous and next routes have different base path
+    if ( p?.path.match(r)[0].replace(i, "") !== n.path.match(r)[0].replace(i, "") ) {
+      // Only add empty row when there is valid previous route
+      if (p) sortedRoutes.push(Array(3).fill(""))
 
-			const section: string = n.path.match(r)[0].replace(i, "") || "general"
-			const sectionCapitalized: string = section.charAt(0).toUpperCase() + section.substring(1)
+        const section: string = n.path.match(r)[0].replace(i, "") || "general"
+        const sectionCapitalized: string = section.charAt(0).toUpperCase() + section.substring(1)
 
-			// Push empty row
-			sortedRoutes.push(["", chalk.gray(sectionCapitalized), ""])
-		}
+        // Push empty row
+        sortedRoutes.push(["", chalk.gray(sectionCapitalized), ""])
+    }
 
-		// Push route detail row
-		sortedRoutes.push([
-			colorizeRouteMethod(n.method),
-			chalk.white(highlightedParamsPath),
-			chalk.gray(cleanedMiddlewareString)
-		])
+    // Push route detail row
+    sortedRoutes.push([
+      colorizeRouteMethod(n.method),
+      chalk.white(highlightedParamsPath),
+      chalk.gray(cleanedMiddlewareString)
+    ])
 
-		return n
+    return n
 
-	}, null)
+  }, null)
 
-	return sortedRoutes	
+  return sortedRoutes	
 
 }
 
