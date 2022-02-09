@@ -1,4 +1,14 @@
+/**
+ *
+ *  Helper: Colorize Route Method
+ *  @module ./lib/helpers/colorizeRouteMethod
+ *
+ *  @description colorizes each route method with the properly color
+ *  @author diegoulloao
+ *
+ */
 import chalk from "chalk"
+
 
 /**
  * 

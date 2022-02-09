@@ -1,4 +1,14 @@
+/**
+ *
+ *  Helper: Get Routes from Stacks
+ *  @module ./lib/helpers/getRoutesFromStacks
+ *
+ *  @description collects all the routes from each combined stack
+ *  @author diegoulloao
+ *
+ */
 import path from "path"
+
 
 /**
  * 

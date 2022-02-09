@@ -1,4 +1,15 @@
 /**
+ *
+ *  Helper: Get Path from Regex
+ *  @module ./lib/helpers/getPathFromRegex
+ *
+ *  @description gets the route path from the regex
+ *  @author diegoulloao
+ *
+ */
+
+
+/**
  * 
  *  Gets route path from route regex
  * 

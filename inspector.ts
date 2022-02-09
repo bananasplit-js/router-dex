@@ -9,6 +9,7 @@
  */
 require('module-alias/register')
 
+
 import chalk from "chalk"
 
 // Helpers
@@ -23,7 +24,7 @@ import {
 import Express from "express"
 import { Table as CliTable3 } from "cli-table3"
 
-// This avoid no types declaration for this package
+// This avoid no "types declaration" warning for this package
 const sortPaths: any = require("sort-route-paths")
 
 
@@ -36,7 +37,7 @@ const routerDex = (server: Express.Application, appName?: string) => {
 
   if ( !groupsParamArray.length ) {
     // Message when inspecting all routes
-    console.log(chalk.yellow("Inspecting all routes..."), "\n")
+    console.log(chalk.cyan("Inspecting all routes..."), "\n")
 
   } else {
     // Message when inspecting groups of routes
@@ -45,7 +46,7 @@ const routerDex = (server: Express.Application, appName?: string) => {
       groupsParamArray.join(groupsParamArray.length > 2 ? ", " : " and ") + "..."
     ]
 
-    console.log(chalk.yellow(headMessageArray.join(" ")), "\n")
+    console.log(chalk.cyan(headMessageArray.join(" ")), "\n")
   }
 
   // Checks if express version >= 4 or exit
@@ -109,7 +110,7 @@ const routerDex = (server: Express.Application, appName?: string) => {
   if ( !filteredRoutes ) {
     console.log(
       chalk.green(
-        `${chalk.bold(`${routes.length} total`)} route${routes.length > 1 ? "s" : ""} available in your application 🚀`
+        `${chalk.bold("total:")} ${routes.length} route${routes.length > 1 ? "s" : ""} available in your application 🚀`
       ),
       "\n"
     )
@@ -120,7 +121,7 @@ const routerDex = (server: Express.Application, appName?: string) => {
 
     // Message as array
     const filteredSuccessMessage: string[] = [
-      `${chalk.bold(`${totalFiltered} of ${routes.length}`)} total route${routes.length > 1 ? "s" : ""}`,
+      `${chalk.bold("total:")} ${totalFiltered} of ${routes.length} route${routes.length > 1 ? "s" : ""}`,
       `that matches with ${chalk.bold(groupsParamArray.join(groupsParamArray.length > 2 ? ", " : " and "))}`,
       `${totalFiltered ? "🚀" : ""}`
     ]

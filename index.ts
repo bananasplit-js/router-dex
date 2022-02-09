@@ -8,10 +8,12 @@
  */
 require('module-alias/register')
 
+
 import Express from "express"
 import chalk from "chalk"
 
 import routerDex from "@root/inspector"
+
 
 // Exit if path from where to import the express server is not valid
 if ( !process.argv[1] ) {

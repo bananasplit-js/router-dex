@@ -1,3 +1,12 @@
+/**
+ *
+ *  Helpers: index
+ *  @module ./lib/helpers
+ *
+ *  @description indexation file for helpers
+ *  @author diegoulloao
+ *
+ */
 import combineStacks from "./combineStacks"
 import generateTable from "./generateTable"
 import tablerizeRoutes from "./tablerizeRoutes"

@@ -1,5 +1,15 @@
+/**
+ *
+ *  Helper: Tablerize Routes
+ *  @module ./lib/helpers/tablerizeRoutes
+ *
+ *  @description Puts all routes, methods and middlewares information into a cli table
+ *  @author diegoulloao
+ *
+ */
 import chalk from "chalk"
 import colorizeRouteMethod from "./colorizeRouteMethod"
+
 
 /**
  * 
@@ -20,7 +30,9 @@ const tablerizeRoutes = ( routes: any[] ): any[] => {
     const highlightedParamsPath: string = n.path.replace(/:[a-z0-9]+/g, chalk.cyan.bold("$&"))
 
     // Changes <anonymous> by anonymous
-    const cleanedMiddlewareString: string = n.middlewares.replace(/^<anonymous>$/g, chalk.red("anonymous"))
+    const cleanedMiddlewareString: string = n.middlewares
+      .replace(/^<anonymous>$/, chalk.red("anonymous"))
+      .replace("bound ", chalk.cyan("*"))
 
     // Add section label if previous and next routes have different base path
     if ( p?.path.match(r)[0].replace(i, "") !== n.path.match(r)[0].replace(i, "") ) {
