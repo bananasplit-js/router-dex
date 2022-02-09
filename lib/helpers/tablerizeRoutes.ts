@@ -30,9 +30,11 @@ const tablerizeRoutes = ( routes: any[] ): any[] => {
     const highlightedParamsPath: string = n.path.replace(/:[a-z0-9]+/g, chalk.cyan.bold("$&"))
 
     // Changes <anonymous> by anonymous
-    const cleanedMiddlewareString: string = n.middlewares
-      .replace(/^<anonymous>$/, chalk.red("anonymous"))
-      .replace("bound ", chalk.cyan("*"))
+    const cleanedMiddlewares: string[] = n.middlewares.map((m: string) => (
+      m.replace(/^<anonymous>$/, chalk.red("anonymous")).replace("bound ", chalk.cyan("*"))
+     ))
+
+     const cleanedMiddlewaresString: string = cleanedMiddlewares.join(", ")
 
     // Add section label if previous and next routes have different base path
     if ( p?.path.match(r)[0].replace(i, "") !== n.path.match(r)[0].replace(i, "") ) {
@@ -50,7 +52,7 @@ const tablerizeRoutes = ( routes: any[] ): any[] => {
     sortedRoutes.push([
       colorizeRouteMethod(n.method),
       chalk.white(highlightedParamsPath),
-      chalk.gray(cleanedMiddlewareString)
+      chalk.gray(cleanedMiddlewaresString)
     ])
 
     return n

@@ -127,7 +127,7 @@ const routerDex = (server: Express.Application, appName?: string): void => {
 
   // Check if there is anonymous functions used as middlewares
   const hasAnonymous: boolean = (
-    (filteredRoutes || sortedRoutes).some((r: any) => /<anonymous>/.test(r.middlewares))
+    (filteredRoutes || sortedRoutes).some((r: any) => /<anonymous>/.test(r.middlewares.join(", ")))
   )
 
   if ( hasAnonymous ) {

@@ -35,7 +35,7 @@ const getRoutesFromStacks = ( stacks: any[] ): any[] => {
           if ( method && !routeLogged[method] ) {
             // Route path parts
             const fullPathArray: string[] = [stack.routerPath, stack.route.path, route.path]
-            const middlewaresString: string = stack.middlewares ? stack.middlewares.join(", ") : ""
+            const middlewares: string[] = stack.middlewares || []
 
             // Convert path parts to a entire string
             const stackPath: string = path.resolve(
@@ -45,7 +45,7 @@ const getRoutesFromStacks = ( stacks: any[] ): any[] => {
             routes.push({
               path: stackPath,
               method,
-              middlewares: middlewaresString
+              middlewares
             })
 
             // Avoid duplicated routes during iteration
