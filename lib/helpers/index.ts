@@ -7,10 +7,10 @@
  *  @author diegoulloao
  *
  */
-import combineStacks from "./combineStacks"
-import generateTable from "./generateTable"
-import tablerizeRoutes from "./tablerizeRoutes"
-import getRoutesFromStacks from "./getRoutesFromStacks"
+import combineStacks from "@helpers/combineStacks"
+import generateTable from "@helpers/generateTable"
+import tablerizeRoutes from "@helpers/tablerizeRoutes"
+import getRoutesFromStacks from "@helpers/getRoutesFromStacks"
 
 export {
   combineStacks,

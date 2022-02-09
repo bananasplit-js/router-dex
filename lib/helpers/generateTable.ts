@@ -14,6 +14,7 @@ import chalk from "chalk"
 import { Table as CliTable3 } from "cli-table3"
 
 const generateTable = (): CliTable3 => {
+
   const table = new Table({
     head: [
       chalk.yellow.bold("\nmethod\n"),
@@ -46,6 +47,7 @@ const generateTable = (): CliTable3 => {
   })
 
   return table
+
 }
 
 export default generateTable

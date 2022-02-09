@@ -20,10 +20,10 @@
 const getPathFromRegex = ( regexp: RegExp ): string => {
 
   return regexp
-  .toString()
-  .replace("/^", "")
-  .replace("?(?=\\/|$)/i", "")
-  .replace(/\\\//g, "/")
+    .toString()
+    .replace("/^", "")
+    .replace("?(?=\\/|$)/i", "")
+    .replace(/\\\//g, "/")
 
 }
 

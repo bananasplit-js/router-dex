@@ -1,4 +1,5 @@
 /**
+ *
  *  Router Dex Script
  *  @module .
  *
@@ -6,7 +7,7 @@
  *  @author diegoulloao
  *
  */
-require('module-alias/register')
+require("module-alias/register")
 
 
 import Express from "express"
@@ -22,7 +23,7 @@ if ( !process.argv[1] ) {
 }
 
 // Local package.json
-const clientPackageJson = require(`${process.cwd()}/package.json`)
+const clientPackageJson: any = require(`${process.cwd()}/package.json`)
 
 // Module absolute path where to import the express server
 const _module: string = process.argv[1]

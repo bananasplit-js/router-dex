@@ -1,5 +1,5 @@
 /**
- * 
+ *
  *  Router Dex
  *  @module .
  * 
@@ -7,7 +7,7 @@
  *  @author diegoulloao
  * 
  */
-require('module-alias/register')
+require("module-alias/register")
 
 
 import chalk from "chalk"
@@ -18,7 +18,7 @@ import {
   generateTable,
   tablerizeRoutes,
   getRoutesFromStacks
-} from "./lib/helpers"
+} from "@lib/helpers"
 
 // Types
 import Express from "express"
@@ -28,7 +28,19 @@ import { Table as CliTable3 } from "cli-table3"
 const sortPaths: any = require("sort-route-paths")
 
 
-const routerDex = (server: Express.Application, appName?: string) => {
+/**
+ *
+ *  Router Dex
+ *  @description inspects all express server routes
+ *
+ *  @param { Express.Application } server
+ *  @param { string? } appName
+ *
+ *  @returns { void }
+ *
+ */
+const routerDex = (server: Express.Application, appName?: string): void => {
+
   // Group filter array passed as params
   const groupsParamArray: string[] = process.argv.slice(2)
 
@@ -128,6 +140,7 @@ const routerDex = (server: Express.Application, appName?: string) => {
 
     console.log(chalk.green(filteredSuccessMessage.join(" ")), "\n")
   }
+
 }
 
 export default routerDex

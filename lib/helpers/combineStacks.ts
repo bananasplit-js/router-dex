@@ -7,7 +7,7 @@
  *  @author diegoulloao
  *
  */
-import getPathFromRegex from "./getPathFromRegex"
+import getPathFromRegex from "@helpers/getPathFromRegex"
 
 
 /**
