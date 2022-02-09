@@ -1,25 +1,43 @@
+/**
+ *  Router Dex Script
+ *  @module .
+ *
+ *  @description allows to execute router dex directly via package script
+ *  @author diegoulloao
+ *
+ */
 import Express from "express"
-import routerDex from "./inspector"
+import chalk from "chalk"
 
+import routerDex from "@root/inspector"
+
+// Exit if path from where to import the express server is not valid
 if ( !process.argv[1] ) {
-  console.error("pass a import file")
+  console.error(chalk.bgRed.black("pass a import file"))
   process.exit(1)
 }
 
+// Local package.json
 const clientPackageJson = require(`${process.cwd()}/package.json`)
-const _module: string = process.argv[1]
-const key: string = process.argv[2]
 
-if ( key ) {
-  process.argv.splice(2, 1)
-}
+// Module absolute path where to import the express server
+const _module: string = process.argv[1]
+
+// If module export the server as default or specific name
+const importName: string = process.argv[2]
+
+// Remove import name from process arguments
+process.argv.splice(2, 1)
 
 try {
-  const server: Express.Application = key === "default" ? require(_module) : require(_module)[key]
+  // Import the express server dinamycally
+  const server: Express.Application = (importName === "default")
+    ? require(_module)
+    : require(_module)[importName]
 
-  // Inspecting...
-  routerDex(server, clientPackageJson?.name)
+  // Inspect routes
+  routerDex(server, clientPackageJson.name)
 
 } catch (e) {
-  console.error("not a valid import")
+  console.error(chalk.bgRed.black("not a valid import"))
 }

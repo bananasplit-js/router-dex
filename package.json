@@ -5,8 +5,7 @@
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
-    "build": "tsc",
-    "prepublish": "npm build"
+    "build": "tsc"
   },
   "license": "MIT",
   "author": "diegoulloao",

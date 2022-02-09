@@ -1,9 +1,11 @@
 import combineStacks from "./combineStacks"
-import getRoutesFromStacks from "./getRoutesFromStacks"
+import generateTable from "./generateTable"
 import tablerizeRoutes from "./tablerizeRoutes"
+import getRoutesFromStacks from "./getRoutesFromStacks"
 
 export {
   combineStacks,
+  generateTable,
   tablerizeRoutes,
   getRoutesFromStacks
 }
