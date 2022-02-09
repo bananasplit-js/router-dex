@@ -22,6 +22,7 @@
   "_moduleAliases": {
     "@root": ".",
     "@lib": "lib",
-    "@helpers": "lib/helpers"
+    "@helpers": "lib/helpers",
+    "@types": "lib/types"
   }
 }

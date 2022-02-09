@@ -3,7 +3,7 @@
  *  Router Dex
  *  @module .
  * 
- *  @description provides a function to inspect all server routes manually
+ *  @description provides functions to inspect all server routes manually
  *  @author diegoulloao
  * 
  */
@@ -23,6 +23,7 @@ import {
 // Types
 import Express from "express"
 import { Table as CliTable3 } from "cli-table3"
+import { IRoutesTypes } from "@types"
 
 // This avoid no "types declaration" warning for this package
 const sortPaths: any = require("sort-route-paths")
@@ -30,22 +31,20 @@ const sortPaths: any = require("sort-route-paths")
 
 /**
  *
- *  Router Dex
- *  @description inspects all express server routes
+ *  Get All Routes
+ *  @description gets all types of routes from the server
  *
  *  @param { Express.Application } server
- *  @param { string? } appName
- *
- *  @returns { void }
+ *  @returns { IRoutesTypes }
  *
  */
-const routerDex = (server: Express.Application, appName?: string): void => {
-
-  // Group filter array passed as params
-  const groupsParamArray: string[] = process.argv.slice(2)
+const getAllRoutes = (server: Express.Application): IRoutesTypes => {
 
   // First message spacing
   console.log("")
+
+  // Filter group passed as params in array form
+  const groupsParamArray: string[] = process.argv.slice(2)
 
   if ( !groupsParamArray.length ) {
     // Message when inspecting all routes
@@ -83,6 +82,27 @@ const routerDex = (server: Express.Application, appName?: string): void => {
       (r: any) => new RegExp(`^\/(${groupsParamArray.join("|")})(\/|$)`).test(r.path)
     )
   }
+
+  return { routes, sortedRoutes, filteredRoutes }
+
+}
+
+
+/**
+ *
+ *  Router Dex
+ *  @description inspects all express server routes
+ *
+ *  @param { Express.Application } server
+ *  @param { string? } appName
+ *
+ *  @returns { void }
+ *
+ */
+const routerDex = (server: Express.Application, appName?: string): void => {
+
+  // Gets all routes types
+  const { routes, sortedRoutes, filteredRoutes }: IRoutesTypes = getAllRoutes(server)
 
   // Colorizes all routes data parts
   const tablerizedRoutes: any[] = tablerizeRoutes(filteredRoutes || sortedRoutes)
@@ -131,6 +151,9 @@ const routerDex = (server: Express.Application, appName?: string): void => {
     // Filtered routes total
     const totalFiltered: number = filteredRoutes.length
 
+    // Filter group passed as params in array form
+    const groupsParamArray: string[] = process.argv.slice(2)
+
     // Message as array
     const filteredSuccessMessage: string[] = [
       `${chalk.bold("total:")} ${totalFiltered} of ${routes.length} route${routes.length > 1 ? "s" : ""}`,
@@ -144,3 +167,6 @@ const routerDex = (server: Express.Application, appName?: string): void => {
 }
 
 export default routerDex
+export { getAllRoutes }
+
+export type { IRoutesTypes }
