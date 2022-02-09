@@ -6,6 +6,8 @@
  *  @author diegoulloao
  *
  */
+require('module-alias/register')
+
 import Express from "express"
 import chalk from "chalk"
 

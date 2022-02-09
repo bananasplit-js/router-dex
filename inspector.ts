@@ -7,7 +7,7 @@
  *  @author diegoulloao
  * 
  */
-
+require('module-alias/register')
 
 import chalk from "chalk"
 
