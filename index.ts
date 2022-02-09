@@ -15,7 +15,7 @@ import routerDex from "@root/inspector"
 
 // Exit if path from where to import the express server is not valid
 if ( !process.argv[1] ) {
-  console.error(chalk.bgRed.black("pass a import file"))
+  console.log(chalk.bgRed.black(" Must specify a module to import. "), "\n")
   process.exit(1)
 }
 
@@ -41,5 +41,6 @@ try {
   routerDex(server, clientPackageJson.name)
 
 } catch (e) {
-  console.error(chalk.bgRed.black("not a valid import"))
+  console.log( chalk.bgRed.black(" Must specify a valid namespace to import. "), "\n")
+  console.log(chalk.red("If the module exports the application by default then use \"default\" right after the module path."), "\n")
 }
