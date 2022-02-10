@@ -139,7 +139,7 @@ In the middleware column of the generated table you can see the following notati
 - `*`: means the middleware/controller function passed is binded `controller.bind(ref)`
 - `anonymous`: means the middleware/controller function was passed directly into the router/app
 
-Inside the middleware array of each route returned by `getAllRoutes` you can see the following notations:
+Inside the middleware array of each route returned by `getAllRoutes` you can see the following values:
 - `bound middlewareName`: means the middleware/controller function passed is binded
 - `<anonymous>`: means the middleware/controller function passed is anonymous
 
