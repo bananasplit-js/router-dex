@@ -40,15 +40,28 @@ const namespace: string = process.argv[2]
 process.argv.splice(2, 1)
 
 try {
-  // Import the express server dinamycally
-  const server: Express.Application = (namespace === "default")
-    ? require(_module)
-    : require(_module)[namespace]
+  // Imports the module
+  const Module: any = require(_module)
+
+  // Check if the namespace provided is valid
+  if ( namespace !== "default" && !Module[namespace] ) {
+    console.log(chalk.bgRed.black(" Must provide a valid namespace to import. "), "\n")
+    console.log(chalk.red("If the module exports the application by default then use \"default\" right after the module path."), "\n")
+    process.exit(1)
+  }
+
+  // Gets the express server from the module
+  const server: Express.Application = (namespace === "default") ? Module : Module[namespace]
+
+  // Checks if object passed is an express instance
+  if ( !server.hasOwnProperty("listen") || typeof server.listen !== "function" ) {
+    console.log(chalk.bgRed.black(" Must provide a valid express instance. "), "\n")
+    process.exit(1)
+  }
 
   // Inspect routes
   routerDex(server, clientPackageJson.name)
 
 } catch (e: any) {
-  console.log( chalk.bgRed.black(" Must specify a valid namespace to import. "), "\n")
-  console.log(chalk.red("If the module exports the application by default then use \"default\" right after the module path."), "\n")
+  console.log(chalk.bgRed.black(" Must specify a valid module to import. "), "\n")
 }
