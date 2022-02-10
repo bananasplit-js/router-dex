@@ -16,6 +16,11 @@ import chalk from "chalk"
 import routerDex from "@root/inspector"
 
 
+// ts-node adds so many unnecessary parameters, we delete them
+if ( /\.bin\/ts-node/.test(process.argv[1]) ) {
+  process.argv.splice(0, process.argv.findIndex((a: string) => /router-dex/.test(a)))
+}
+
 // Exit if path from where to import the express server is not valid
 if ( !process.argv[1] ) {
   console.log(chalk.bgRed.black(" Must specify a module to import. "), "\n")
@@ -43,7 +48,7 @@ try {
   // Inspect routes
   routerDex(server, clientPackageJson.name)
 
-} catch (e) {
+} catch (e: any) {
   console.log( chalk.bgRed.black(" Must specify a valid namespace to import. "), "\n")
   console.log(chalk.red("If the module exports the application by default then use \"default\" right after the module path."), "\n")
 }
