@@ -116,7 +116,7 @@ You will get all the routes and all of them sorted by alphabet + base path + wit
 **Typescript**
 ```typescript
 import { getAllRoutes, DexRoutes } from "router-dex/inspector"
-import app from "../app"
+import app from "./src/app"
 
 const { routes }: { routes: DexRoutes } = getAllRoutes(app)
 ```
