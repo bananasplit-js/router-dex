@@ -6,7 +6,7 @@
 
 ## Installation
 ```zsh
-yarn add router-dex | npm i router-dex
+yarn add router-dex --dev | npm i router-dex -D
 ```
 
 ## Requirements
