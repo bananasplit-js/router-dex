@@ -34,16 +34,16 @@ const clientPackageJson: any = require(`${process.cwd()}/package.json`)
 const _module: string = process.argv[1]
 
 // If module export the server as default or specific name
-const importName: string = process.argv[2]
+const namespace: string = process.argv[2]
 
 // Remove import name from process arguments
 process.argv.splice(2, 1)
 
 try {
   // Import the express server dinamycally
-  const server: Express.Application = (importName === "default")
+  const server: Express.Application = (namespace === "default")
     ? require(_module)
-    : require(_module)[importName]
+    : require(_module)[namespace]
 
   // Inspect routes
   routerDex(server, clientPackageJson.name)
