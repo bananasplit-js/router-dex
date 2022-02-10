@@ -2,6 +2,8 @@
 
 > Router-dex is a route and middleware inspector compatible with Express >= 4. It was initially developed as part of [bananasplit-js](https://github.com/bananasplit-js/bananasplit-js) but later moved as a standalone module.
 
+<img src="https://raw.githubusercontent.com/diegoulloao/router-dex/dev/public/router-dex.png" width="800" />
+
 ## Installation
 ```zsh
 yarn add router-dex | npm i router-dex
