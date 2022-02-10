@@ -29,13 +29,26 @@ Just add the relative pathname to the file where your express application is exp
 
 If your application is exported under a namespace instead of default, then change it.
 
+**Typescript**
+```json
+"scripts": {
+  "routes:list": "ts-node -r router-dex ./app.ts default"
+},
+```
+
+If you are using typescript custom paths then use [tsconfig-paths](https://github.com/dividab/tsconfig-paths)
+```json
+"routes:list": "ts-node -r tsconfig-paths/register -r router-dex ./app.ts default"
+```
+It is important to require router-dex last.
+
 ## Integration inside a script file
 This implementation allows to you to do some stuffs before and after router-dex is executed.
 
 `src/scripts/routes-list.js`
 ```js
 const routerDex = require("router-dex/inspector")
-const app = require("./src/app")
+const app = require("../app")
 
 routerDex(app, "My App")
 
@@ -52,6 +65,25 @@ Then add the script to your `package.json`
   },
 }
 ```
+
+**Typescript**
+```typescript
+import routerDex from "router-dex/inspector"
+import app from "../app"
+
+routerDex(app, "My Typescript App")
+```
+
+`package.json`
+```json
+"routes:list": "ts-node src/scripts/routes-list.ts"
+```
+
+If you are using typescript custom paths then use [tsconfig-paths](https://github.com/dividab/tsconfig-paths)
+```json
+"routes:list": "ts-node -r tsconfig-paths/register src/scripts/routes-list.ts"
+```
+It is important to require router-dex last.
 
 ## Usage in any javascript file
 Also is possible to get all the routes in a object notation format
@@ -79,6 +111,14 @@ You will get all the routes and all of them sorted by alphabet + base path + wit
     { path: '/users', method: 'GET', middlewares: [Array] }
   ]
 }
+```
+
+**Typescript**
+```typescript
+import { getAllRoutes, DexRoutes } from "router-dex/inspector"
+import app from "../app"
+
+const { routes }: { routes: DexRoutes } = getAllRoutes(app)
 ```
 
 ## Command-line filtering
