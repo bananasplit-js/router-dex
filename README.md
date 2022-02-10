@@ -1,12 +1,13 @@
 <h1 align="center"><a href="https://github.com/diegoulloao/router-dex">Router Dex for Express</a></h1>
 
-<p align="center">Router-dex is a route and middleware inspector compatible with Express >= 4. It was initially developed as part of <a href="https://github.com/bananasplit-js/bananasplit-js">bananasplit-js</a> but later moved as a standalone module.</p>
+<p align="center">Router-dex is a route and middleware inspector compatible with Express >= 4.</p>
+<p align="center">Developed initially as part of <a href="https://github.com/bananasplit-js/bananasplit-js">bananasplit-js</a> but later moved as a standalone module.</p>
 
 <p align="center"><img src="https://raw.githubusercontent.com/diegoulloao/router-dex/dev/public/capture.png" width="800" /></p>
 
 ## Installation
 ```zsh
-yarn add router-dex --dev | npm i router-dex -D
+yarn add router-dex -D | npm i router-dex -D
 ```
 
 ## Requirements
@@ -83,7 +84,6 @@ If you are using typescript custom paths then use [tsconfig-paths](https://githu
 ```json
 "routes:list": "ts-node -r tsconfig-paths/register src/scripts/routes-list.ts"
 ```
-It is important to require router-dex last.
 
 ## Usage in any javascript file
 Also is possible to get all the routes in a object notation format
