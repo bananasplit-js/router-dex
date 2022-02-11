@@ -7,11 +7,18 @@
  *  @author diegoulloao
  *
  */
-require("module-alias/register")
+import moduleAlias from "module-alias"
+moduleAlias.addAliases({
+  "@root": `${__dirname}`,
+  "@lib": `${__dirname}/lib`,
+  "@helpers": `${__dirname}/lib/helpers`,
+  "@types": `${__dirname}/lib/types`
+})
 
 
 import Express from "express"
 import chalk from "chalk"
+import path from "path"
 
 import routerDex from "@root/inspector"
 
@@ -28,10 +35,10 @@ if ( !process.argv[1] ) {
 }
 
 // Local package.json
-const clientPackageJson: any = require(`${process.cwd()}/package.json`)
+const clientPackageJson: any = require(path.normalize(`${process.cwd()}/package.json`))
 
 // Module absolute path where to import the express server
-const modulePath: string = process.argv[1]
+const modulePath: string = path.resolve(process.cwd(), process.argv[1])
 
 // If module export the server as default or specific name
 const namespace: string = process.argv[2]

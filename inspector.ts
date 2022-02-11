@@ -7,7 +7,13 @@
  *  @author diegoulloao
  * 
  */
-require("module-alias/register")
+import moduleAlias from "module-alias"
+moduleAlias.addAliases({
+  "@root": `${__dirname}`,
+  "@lib": `${__dirname}/lib`,
+  "@helpers": `${__dirname}/lib/helpers`,
+  "@types": `${__dirname}/lib/types`
+})
 
 
 import chalk from "chalk"
