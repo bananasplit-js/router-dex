@@ -46,7 +46,7 @@ It is important to require router-dex last.
 ## Integration inside a script file
 This implementation allows to you to do some stuffs before and after router-dex is executed.
 
-`src/scripts/routes-list.js`
+`src/scripts/route-list.js`
 ```js
 const routerDex = require("router-dex/inspector")
 const app = require("../app")
@@ -124,7 +124,7 @@ const { routes }: { routes: DexRoute[] } = getAllRoutes(app)
 ## Command-line filtering
 Router Dex groups all routes by default. To filter by type, just add it at the end of the script call
 ```zsh
-yarn routs:list store | npm run route:list store
+yarn route:list store | npm run route:list store
 ```
 
 Also is possible to pass multiple
