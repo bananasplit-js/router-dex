@@ -5,7 +5,7 @@
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc && cp $(pwd)/{LICENSE,README.md,.npmignore} dist"
   },
   "license": "MIT",
   "author": "diegoulloao",
