@@ -18,5 +18,6 @@
       "@types": ["lib/types"]
     }
   },
-  "include": [".", "package.json", ".npmignore"]
+  "include": [".", "package.json", ".npmignore"],
+  "exclude": ["node_modules", "dist"]
 }
