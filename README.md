@@ -21,7 +21,7 @@ Express >= 4
   "version": "1.0",
   "main": "index.js",
   "scripts": {
-    "route:list": "node -r router-dex ./app.js default"
+    "route:list": "node -r router-dex app.js default"
   },
 }
 ```
@@ -33,13 +33,13 @@ If your application is exported under a namespace instead of default, then chang
 **Typescript**
 ```json
 "scripts": {
-  "route:list": "ts-node -r router-dex ./app.ts default"
+  "route:list": "ts-node -r router-dex app.ts default"
 },
 ```
 
 If you are using typescript custom paths then use [tsconfig-paths](https://github.com/dividab/tsconfig-paths)
 ```json
-"route:list": "ts-node -r tsconfig-paths/register -r router-dex ./app.ts default"
+"route:list": "ts-node -r tsconfig-paths/register -r router-dex app.ts default"
 ```
 It is important to require router-dex last.
 
