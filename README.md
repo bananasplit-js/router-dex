@@ -21,7 +21,7 @@ Express >= 4
   "version": "1.0",
   "main": "index.js",
   "scripts": {
-    "routes:list": "node -r router-dex ./app.js default"
+    "route:list": "node -r router-dex ./app.js default"
   },
 }
 ```
@@ -33,13 +33,13 @@ If your application is exported under a namespace instead of default, then chang
 **Typescript**
 ```json
 "scripts": {
-  "routes:list": "ts-node -r router-dex ./app.ts default"
+  "route:list": "ts-node -r router-dex ./app.ts default"
 },
 ```
 
 If you are using typescript custom paths then use [tsconfig-paths](https://github.com/dividab/tsconfig-paths)
 ```json
-"routes:list": "ts-node -r tsconfig-paths/register -r router-dex ./app.ts default"
+"route:list": "ts-node -r tsconfig-paths/register -r router-dex ./app.ts default"
 ```
 It is important to require router-dex last.
 
@@ -62,7 +62,7 @@ Then add the script to your `package.json`
   "version": "1.0",
   "main": "index.js",
   "scripts": {
-    "routes:list": "node src/scripts/routes-list.js"
+    "route:list": "node src/scripts/route-list.js"
   },
 }
 ```
@@ -77,12 +77,12 @@ routerDex(app, "My Typescript App")
 
 `package.json`
 ```json
-"routes:list": "ts-node src/scripts/routes-list.ts"
+"route:list": "ts-node src/scripts/route-list.ts"
 ```
 
 If you are using typescript custom paths then use [tsconfig-paths](https://github.com/dividab/tsconfig-paths)
 ```json
-"routes:list": "ts-node -r tsconfig-paths/register src/scripts/routes-list.ts"
+"route:list": "ts-node -r tsconfig-paths/register src/scripts/route-list.ts"
 ```
 
 ## Usage in any javascript file
@@ -115,21 +115,21 @@ You will get all the routes and all of them sorted by alphabet + base path + wit
 
 **Typescript**
 ```typescript
-import { getAllRoutes, DexRoutes } from "router-dex/inspector"
+import { getAllRoutes, DexRoute } from "router-dex/inspector"
 import app from "./src/app"
 
-const { routes }: { routes: DexRoutes } = getAllRoutes(app)
+const { routes }: { routes: DexRoute[] } = getAllRoutes(app)
 ```
 
 ## Command-line filtering
 Router Dex groups all routes by default. To filter by type, just add it at the end of the script call
 ```zsh
-yarn routes:list store | npm run routes:list store
+yarn routs:list store | npm run route:list store
 ```
 
 Also is possible to pass multiple
 ```zsh
-yarn routes:list store products | npm run routes:list store products
+yarn route:list store products | npm run route:list store products
 ```
 
 Types passed must match exactly with the group name.
