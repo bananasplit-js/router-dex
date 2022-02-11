@@ -23,7 +23,7 @@ import {
 // Types
 import Express from "express"
 import { Table as CliTable3 } from "cli-table3"
-import { IRoutesTypes } from "@types"
+import { IRoutesTypes, DexRoute } from "@types"
 
 // This avoid no "types declaration" warning for this package
 const sortPaths: any = require("sort-route-paths")
@@ -71,15 +71,15 @@ const getAllRoutes = (server: Express.Application): IRoutesTypes => {
   const stacks: any[] = server._router.stack.reduce(combineStacks, [])
 
   // Routes inspect and sorting
-  const routes: any[] = getRoutesFromStacks(stacks)
-  const sortedRoutes: any = sortPaths(routes, (r: any) => r.path)
+  const routes: DexRoute[] = getRoutesFromStacks(stacks)
+  const sortedRoutes: DexRoute[] = sortPaths(routes, (r: DexRoute) => r.path)
 
   // Filtered routes collection if filter defined
-  let filteredRoutes: any[] | undefined
+  let filteredRoutes: DexRoute[] | undefined
 
   if ( groupsParamArray.length ) {
     filteredRoutes = sortedRoutes.filter(
-      (r: any) => new RegExp(`^\/(${groupsParamArray.join("|")})(\/|$)`).test(r.path)
+      (r: DexRoute) => new RegExp(`^\/(${groupsParamArray.join("|")})(\/|$)`).test(r.path)
     )
   }
 
@@ -127,7 +127,7 @@ const routerDex = (server: Express.Application, appName?: string): void => {
 
   // Check if there is anonymous functions used as middlewares
   const hasAnonymous: boolean = (
-    (filteredRoutes || sortedRoutes).some((r: any) => /<anonymous>/.test(r.middlewares.join(", ")))
+    (filteredRoutes || sortedRoutes).some((r: DexRoute) => /<anonymous>/.test(r.middlewares.join(", ")))
   )
 
   if ( hasAnonymous ) {
@@ -169,4 +169,4 @@ const routerDex = (server: Express.Application, appName?: string): void => {
 export default routerDex
 export { getAllRoutes }
 
-export type { IRoutesTypes }
+export type { IRoutesTypes as DexRoutesTypes, DexRoute }

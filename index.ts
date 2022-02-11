@@ -31,7 +31,7 @@ if ( !process.argv[1] ) {
 const clientPackageJson: any = require(`${process.cwd()}/package.json`)
 
 // Module absolute path where to import the express server
-const _module: string = process.argv[1]
+const modulePath: string = process.argv[1]
 
 // If module export the server as default or specific name
 const namespace: string = process.argv[2]
@@ -41,7 +41,7 @@ process.argv.splice(2, 1)
 
 try {
   // Imports the module
-  const Module: any = require(_module)
+  const Module: any = require(modulePath)
 
   // Check if the namespace provided is valid
   if ( namespace !== "default" && !Module[namespace] ) {

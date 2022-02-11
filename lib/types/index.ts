@@ -4,10 +4,16 @@
  *  @author diegoulloao
  *
  */
-interface IRoutesTypes {
-  routes: any[]
-  sortedRoutes: any[]
-  filteredRoutes: any[] | undefined
+interface DexRoute {
+  path: string
+  method: string
+  middlewares: string[]
 }
 
-export { IRoutesTypes }
+interface IRoutesTypes {
+  routes: DexRoute[]
+  sortedRoutes: DexRoute[]
+  filteredRoutes: DexRoute[] | undefined
+}
+
+export { IRoutesTypes, DexRoute }
