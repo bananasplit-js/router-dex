@@ -1,7 +1,7 @@
 /**
  *
  *  Helper: Get Routes from Stacks
- *  @module ./lib/helpers/getRoutesFromStacks
+ *  @module ./src/helpers/getRoutesFromStacks
  *
  *  @description collects all the routes from each combined stack
  *  @author diegoulloao

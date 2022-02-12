@@ -1,7 +1,7 @@
 /**
  *
  *  Cli Table Generator
- *  @module ./lib/helpers/generateTable
+ *  @module ./src/helpers/generateTable
  *
  *  @description generates a cli table
  *  @author diegoulloao

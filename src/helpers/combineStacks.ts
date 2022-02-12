@@ -1,7 +1,7 @@
 /**
  *
  *  Helper: Combine Stacks
- *  @module ./lib/helpers/combineStacks
+ *  @module ./src/helpers/combineStacks
  *
  *  @description Combines all router stacks into one in a recursive way
  *  @author diegoulloao

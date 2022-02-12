@@ -1,7 +1,7 @@
 /**
  *
  *  Helper: Get Path from Regex
- *  @module ./lib/helpers/getPathFromRegex
+ *  @module ./src/helpers/getPathFromRegex
  *
  *  @description gets the route path from the regex
  *  @author diegoulloao

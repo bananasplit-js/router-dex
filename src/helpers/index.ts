@@ -1,7 +1,7 @@
 /**
  *
  *  Helpers: index
- *  @module ./lib/helpers
+ *  @module ./src/helpers
  *
  *  @description indexation file for helpers
  *  @author diegoulloao

@@ -11,11 +11,11 @@
     "paths": {
       "@root": ["."],
       "@root/*": ["./*"],
-      "@lib": ["lib"],
-      "@lib/*": ["lib/*"],
-      "@helpers": ["lib/helpers"],
-      "@helpers/*": ["lib/helpers/*"],
-      "@types": ["lib/types"]
+      "@src": ["src"],
+      "@src/*": ["src/*"],
+      "@helpers": ["src/helpers"],
+      "@helpers/*": ["src/helpers/*"],
+      "@types": ["src/types"]
     }
   },
   "include": [".", "package.json"],

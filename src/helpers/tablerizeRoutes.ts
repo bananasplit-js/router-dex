@@ -1,7 +1,7 @@
 /**
  *
  *  Helper: Tablerize Routes
- *  @module ./lib/helpers/tablerizeRoutes
+ *  @module ./src/helpers/tablerizeRoutes
  *
  *  @description Puts all routes, methods and middlewares information into a cli table
  *  @author diegoulloao

@@ -1,7 +1,7 @@
 /**
  *
  *  Helper: Colorize Route Method
- *  @module ./lib/helpers/colorizeRouteMethod
+ *  @module ./src/helpers/colorizeRouteMethod
  *
  *  @description colorizes each route method with the properly color
  *  @author diegoulloao

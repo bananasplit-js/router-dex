@@ -8,11 +8,12 @@
  *
  */
 import moduleAlias from "module-alias"
+
 moduleAlias.addAliases({
   "@root": `${__dirname}`,
-  "@lib": `${__dirname}/lib`,
-  "@helpers": `${__dirname}/lib/helpers`,
-  "@types": `${__dirname}/lib/types`
+  "@src": `${__dirname}/src`,
+  "@helpers": `${__dirname}/src/helpers`,
+  "@types": `${__dirname}/src/types`
 })
 
 
