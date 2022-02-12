@@ -157,12 +157,15 @@ const { getProducts } = require("./src/controllers/products")
 router.get("/products", getProducts)
 ```
 
-Reason why is, when you are passing the middleware function directly into the app/router, you are losing track of the reference name to the function itself. This ocurrs because you are not storing it at memory in first place.
+Reason why is when you are passing the middleware function directly into the app/router, you are losing track of the reference name to the function itself. This ocurrs because you are not storing it at memory in first place.
 
-So, in that case you will receive a command-line warning like
+In that case you will receive a command-line warning like
 ```
 * Do not use anonymous functions as middlewares, store them in a constant instead.
 ```
+
+## License
+MIT. [Read the license](https://github.com/bananasplit-js/router-dex/blob/dev/LICENSE)
 
 ---
 **2022 · Bananasplit-js**
