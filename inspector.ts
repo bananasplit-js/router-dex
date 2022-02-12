@@ -53,18 +53,14 @@ const getAllRoutes = (server: Express.Application): IRoutesTypes => {
   // Filter group passed as params in array form
   const groupsParamArray: string[] = process.argv.slice(2)
 
-  if ( !groupsParamArray.length ) {
-    // Message when inspecting all routes
-    console.log(chalk.cyan("Inspecting all routes..."), "\n")
-
-  } else {
+  if ( groupsParamArray.length ) {
     // Message when inspecting groups of routes
     const headMessageArray: string[] = [
       `Inspecting routes that matches with`,
       groupsParamArray.join(groupsParamArray.length > 2 ? ", " : " and ") + "..."
     ]
 
-    console.log(chalk.cyan(headMessageArray.join(" ")), "\n")
+    console.log(chalk.white(headMessageArray.join(" ")), "\n")
   }
 
   // Checks if express version >= 4 or exit
@@ -130,7 +126,7 @@ const routerDex = (server: Express.Application, appName?: string): void => {
   table.push(...tablerizedRoutes, Array(3).fill(""))
 
   // Log the table
-  console.log(table.toString(), "\n")
+  console.log(table.toString())
 
   // Check if there is anonymous functions used as middlewares
   const hasAnonymous: boolean = (
