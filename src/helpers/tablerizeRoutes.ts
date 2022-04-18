@@ -37,7 +37,7 @@ const tablerizeRoutes = ( routes: any[] ): any[] => {
      const cleanedMiddlewaresString: string = cleanedMiddlewares.join(", ")
 
     // Add section label if previous and next routes have different base path
-    if ( p?.path.match(r)[0].replace(i, "") !== n.path.match(r)[0].replace(i, "") ) {
+    if ( p?.path.match(r)?.[0].replace(i, "") !== n.path.match(r)?.[0].replace(i, "") ) {
       // Only add empty row when there is valid previous route
       if (p) sortedRoutes.push(Array(3).fill(""))
 
