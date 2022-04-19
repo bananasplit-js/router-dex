@@ -28,9 +28,8 @@ import {
 } from "@helpers"
 
 // Types
-import Express from "express"
 import { Table as CliTable3 } from "cli-table3"
-import { IRoutesTypes, DexRoute } from "@types"
+import { IRoutesTypes, DexRoute, Express } from "@types"
 
 // This avoid no "types declaration" warning for this package
 const sortPaths: any = require("sort-route-paths")
@@ -45,7 +44,7 @@ const sortPaths: any = require("sort-route-paths")
  *  @returns { IRoutesTypes }
  *
  */
-const getAllRoutes = (server: Express.Application): IRoutesTypes => {
+const getAllRoutes = (server: Express): IRoutesTypes => {
 
   // First message spacing
   console.log("")
@@ -102,7 +101,7 @@ const getAllRoutes = (server: Express.Application): IRoutesTypes => {
  *  @returns { void }
  *
  */
-const routerDex = (server: Express.Application, appName?: string): void => {
+const routerDex = (server: Express, appName?: string): void => {
 
   // Gets all routes types
   const { routes, sortedRoutes, filteredRoutes }: IRoutesTypes = getAllRoutes(server)
