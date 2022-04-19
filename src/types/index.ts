@@ -16,4 +16,6 @@ interface IRoutesTypes {
   filteredRoutes: DexRoute[] | undefined
 }
 
-export { IRoutesTypes, DexRoute }
+type Express = any
+
+export { IRoutesTypes, DexRoute, Express }

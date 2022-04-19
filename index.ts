@@ -17,12 +17,11 @@ moduleAlias.addAliases({
 })
 
 
-import Express from "express"
-import chalk from "chalk"
 import path from "path"
-
+import chalk from "chalk"
 import routerDex from "@root/inspector"
 
+import { Express } from "@types"
 
 // ts-node adds so many unnecessary parameters, we delete them
 if ( /\.bin\/ts-node/.test(process.argv[1]) ) {
@@ -59,7 +58,7 @@ try {
   }
 
   // Gets the express server from the module
-  const server: Express.Application = (namespace === "default") ? Module : Module[namespace]
+  const server: Express = (namespace === "default") ? Module : Module[namespace]
 
   // Checks if object passed is an express instance
   if ( !server.hasOwnProperty("listen") || typeof server.listen !== "function" ) {
