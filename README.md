@@ -1,3 +1,4 @@
+<p align="center"><img src="https://raw.githubusercontent.com/diegoulloao/bananasplit-js/master/assets/images/router-dex.png" width="100" /></p>
 <h1 align="center"><a href="https://github.com/diegoulloao/router-dex">Router Dex for Express</a></h1>
 
 <p align="center">Router-dex is a route and middleware inspector compatible with Express >= 4.</p>
@@ -168,4 +169,4 @@ In that case you will receive a command-line warning like
 MIT. [Read the license](https://github.com/bananasplit-js/router-dex/blob/dev/LICENSE)
 
 ---
-**2022 · Bananasplit-js**
+![label](https://img.shields.io/badge/2022-bananasplit--js-yellow?style=for-the-badge)
