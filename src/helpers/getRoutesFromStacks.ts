@@ -38,11 +38,15 @@ const getRoutesFromStacks = ( stacks: any[] ): any[] => {
             const middlewares: string[] = stack.middlewares || []
 
             // Convert path parts to a entire string
-            const stackPath: string = fullPathArray
+            let stackPath: string = fullPathArray
               .filter((s: string) => !!s)
               .join("")
               .replace("//", "/")
-              .replace(/\/$/, "")
+
+            // Delete end slash only if path is not just /
+            if ( stackPath !== "/" ) {
+              stackPath = stackPath.replace(/\/$/, "")
+            }
 
             routes.push({
               path: stackPath,
